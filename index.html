@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="name">
+        <h4>
+            ToDo for Daily Work :) 
+        </h4>
+        <small>Its Free Enjoy:}</small>
+    </div>
+    <div id="form">
+       <div class="inpu">
+            <label for="title">Title</label>
+           <input id="title" type="text"> 
+
+           <label for="discription">Discription</label>
+           <textarea name="" id="discription"  cols="30" ></textarea>
+       <div class="button">
+           <button onclick="getAndUpdate()" id="add">ADD TO LIST</button>
+           <button onclick="clearstorage()">Clear All</button>
+       </div>
+    </div>
+        <div id="items">
+<h2>YOUR ITEMS</h2>
+        <table style="width:100%">
+            <tr>
+                <th>S.No</th>
+                <th>TITLE</th>
+                <th>DISCRIPTION</th>
+                <th>Actions</th>
+
+            </tr>
+            <tbody id="tablebody">
+            <tr >
+                <td>1</td>
+                <td>BRAIN STOPPED</td>
+                <td>GO GET COFFEE</td>
+                <td><button>Delete</button></td>
+
+            </tr>
+            </tbody>
+          
+        </table>
+    </div>
+    </div>
+    <div>
+    <h3 class="copy">&copy; Murtaza Joo</h3>
+</div>
+
+
+
+
+    <script src="source.js"></script>
+    <script>
+        function getAndUpdate() {
+           console.log(' updatinf ........')
+
+
+        let title = document.getElementById('title').value;
+        let dis = document.getElementById('discription').value;
+    
+    
+        if (localStorage.getItem('itemsJson') == null) {
+            itemJsonArray = []
+            itemJsonArray.push([title, dis])
+            localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+        }
+        else {
+             itemJsonArrayStr = localStorage.getItem('itemsJson')
+            itemJsonArray = JSON.parse(itemJsonArrayStr)
+            itemJsonArray.push([title,dis])
+    
+            localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+
+        }
+        update()
+
+    }
+        function update(){
+            if (localStorage.getItem('itemsJson') == null) {
+            itemJsonArray = []
+            localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+        }
+        else {
+             itemJsonArrayStr = localStorage.getItem('itemsJson')
+            itemJsonArray = JSON.parse(itemJsonArrayStr)
+
+        }
+
+        document.getElementById('title').value="";
+        document.getElementById('discription').value=""
+        // add in  table
+        let tableBody = document.getElementById('tablebody')
+        let str = "";
+        
+        
+        itemJsonArray.forEach((element, index) => {
+            str += `
+            <tr >
+            <td scope='row' >${index + 1}</td>
+            <td> ${element[0]}</td>
+            <td>${element[1]}</td>
+            <td><button onclick='deleted(${index})'>Delete</button></td>
+    
+        </tr>
+            `;
+            
+        });
+    
+    
+        tableBody.innerHTML = str
+        
+}
+update()
+function deleted(itemIndex){
+    itemJsonArrayStr = localStorage.getItem('itemsJson')
+    itemJsonArray = JSON.parse(itemJsonArrayStr)
+    itemJsonArray.splice(itemIndex,1)
+    localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+update()
+}
+
+function clearstorage(){
+    if (confirm ("Do you really want to clear")){
+    localStorage.clear()
+    update()}
+
+}
+// let add = document.getElementById('add')
+
+
+
+// add.addEventListener("click" , update());
+// update()
+    </script>
+</body>
+</html>

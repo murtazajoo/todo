@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+    padding: 0;  
+}
+
+
+body{
+margin: 0;
+padding: 0;
+font-family: 'Nunito', sans-serif;
+font-weight: 700;
+background: linear-gradient(rgba(2,3,4,.3),rgba(2, 3, 4, 0.445),rgba(2, 3, 4, 0.837));
+height: 100vh;
+}
+.name{
+    text-align: center;
+    padding: 60px 0;
+    font-size: 20px;
+    color: wheat;
+}
+small{
+    font-size: 10px;
+}
+
+
+
+
+#form {
+    gap: 50px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.inpu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    display: flex;
+    cursor: pointer;
+}
+
+input {
+    transition: 300ms;
+    margin: 20px 0;
+    border: none;
+    border-bottom : 1px solid #333;
+    background: transparent;
+}
+
+textarea {
+    transition: 500ms;
+    border: none;
+    margin: 20px 0;
+    padding: 10px 0;
+    border-bottom : 1px solid #333;
+    background: transparent;
+}
+
+label{
+    color: rgb(58, 58, 58);
+}
+
+
+button {
+    border: none;
+    color: wheat;
+    background-color: rgba(2, 2, 218, 0.945);
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    padding: 50px 100px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
+table {
+    width: 100%;
+    align-items: center;
+    border-collapse: collapse;
+}
+
+#items button{
+    padding: 7px;
+    color: white;
+    border-radius: 5px;
+}
+tr th , td{
+padding: 10px;
+    border: 1px solid rgb(231, 231, 231);
+    border-left: none;
+    border-right: none;
+border-radius: 30px;
+    text-align: center;
+
+}
+
+
+
+input:focus{
+    background-color: rgba(51, 51, 51, 0.541);
+    font-size: medium;
+    border-radius: 5px;
+
+font-weight: 100 !important; 
+    color: aliceblue;
+    padding: 10px 0;
+    outline: none;
+
+}
+textarea:focus{
+    padding: 10px 0 ;
+height: 100px;
+    font-size: larger;
+    border-radius: 5px;
+
+font-weight: 300;
+    background-color: rgba(51, 51, 51, 0.404);
+    color: aliceblue;   
+    outline: none;
+}
+
+.copy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+    padding-top: 50px;
+    color: wheat;
+    font-size: small;
+}
+
+
+
+
+@media (max-width:900px){
+    body{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    #form{
+
+        margin: 0 auto;
+
+        flex-direction: column;
+        gap: 0;
+        width: 90%;
+        padding: 4px;
+    }
+    #items , table{
+width: 100%;
+        margin: 0 auto;
+        
+        padding: 0;
+
+    }
+    .inpu{
+        width: 90%;
+    }
+    h2{
+        font-size: medium;
+    }
+
+    button{
+        padding: 10px;
+    }
+}
